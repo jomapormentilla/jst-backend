@@ -47,4 +47,8 @@ class UserTest < ActiveSupport::TestCase
         assert_equal test_week test_user.weeks[0]
     end
 
+    test "has MBG_valid? function to return boolean value" do
+        assert User.all[0].methods.include?(:MBG_valid?)
+    end
+
 end
