@@ -25,6 +25,11 @@ class UserTest < ActiveSupport::TestCase
         assert_not test_user.valid?
     end
 
+    test "defaults account_type to graduate" do
+        test_user = User.new(name: "John Smith", email: "john@gmail.com", password: "Password123")
+        assert_equal test_user.account_type "graduate"
+    end
+
     test "account_type must be one of admin, graduate, career_coach" do
         test_user = User.new(name: "John Smith", email: "john@gmail.com", password: "Password123", account_type: "Test")
         assert_not test_user.valid?
