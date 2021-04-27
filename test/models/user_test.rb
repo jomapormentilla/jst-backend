@@ -13,8 +13,20 @@ class UserTest < ActiveSupport::TestCase
         assert_not test_user.valid?
     end
 
-    test "requires password" do
+    test "requires password but not password confirmation" do
         test_user = User.new(name: "John Smith")
+        assert_not test_user.valid?
+    end
+
+    test "requires password to match password confirmation" do
+        test_user = User.new(name: "John Smith")
+        test_user.password = 'foo'
+        test_user.password_confirmation = 'fo0'
+        assert_not test_user.valid?
+    end
+
+    test "account_type must be one of admin, graduate, career_coach" do
+        test_user = User.new(name: "John Smith", email: "john@gmail.com", password: "Password123", account_type: "Test")
         assert_not test_user.valid?
     end
 
