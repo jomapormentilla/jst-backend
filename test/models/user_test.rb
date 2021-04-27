@@ -19,9 +19,15 @@ class UserTest < ActiveSupport::TestCase
     end
 
     test "email is invalid when non-unique" do
-      User.create(name: "John Smith", email: "john@gmail.com", password: "Password123")
-      test_user = User.new(name: "John Smith", email: "john@gmail.com", password: "Password123")
-      assert_not test_user.valid?
+        User.create(name: "John Smith", email: "john@gmail.com", password: "Password123")
+        test_user = User.new(name: "John Smith", email: "john@gmail.com", password: "Password123")
+        assert_not test_user.valid?
+    end
+
+    test "has many weeks" do
+        test_user = User.create(name: "John Smith", email: "john1@gmail.com", password: "Password123")
+        test_week = User.weeks.build
+        assert_equal test_week test_user.weeks[0]
     end
 
 end
