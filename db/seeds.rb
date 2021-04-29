@@ -1,6 +1,11 @@
 require 'faker'
 require 'date'
 
+# creates 1 global test account
+User.find_or_create_by!(email: "admin@test.com") do |user|
+    user.password = "admin"
+end if Rails.env.development?
+
 # creates 10 student/graduates
 10.times do
     User.create({
@@ -26,7 +31,7 @@ end
 # creates 20 activities
 20.times do
     Activity.create({
-        
+
     })
 end
 
