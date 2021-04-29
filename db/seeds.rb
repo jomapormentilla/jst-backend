@@ -37,6 +37,15 @@ end
     })
 end
 
+# creates 15 weeks and assigns them to random users
+15.times do 
+    Week.create({
+        commits: Faker::Number.digit,
+        blog_links: Faker::Internet.url,
+        user: User.find(User.pluck(:id).sample)
+    })
+end
+
 # creates 5 email activities
 5.times do
     Activity.create({
@@ -50,6 +59,7 @@ end
         notes: Faker::Company.catch_phrase, 
         status: "???", 
         date: Faker::Date.backward(days: 5).strftime("%a, %d %b %Y")
+        # week: Week.find(Week.pluck(:id).sample)
     })
 end
 
@@ -65,7 +75,6 @@ end
         notes: Faker::Company.catch_phrase, 
         status: "???", 
         date: Faker::Date.backward(days: 5).strftime("%a, %d %b %Y")
+        # week: Week.find(Week.pluck(:id).sample)
     })
 end
-
-# user: User.find(User.pluck(:id).sample)
