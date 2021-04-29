@@ -37,23 +37,35 @@ end
     })
 end
 
-# creates 20 activities
-20.times do
+# creates 5 email activities
+5.times do
     Activity.create({
-
+        activity_type: "???", 
+        company: Faker::Company.name, 
+        job_title: Faker::Job.title, 
+        job_link: Faker::Internet.url, 
+        contact_method: "email", 
+        action: "???", 
+        action_complete: true, 
+        notes: Faker::Company.catch_phrase, 
+        status: "???", 
+        date: Faker::Date.backward(days: 5).strftime("%a, %d %b %Y")
     })
 end
 
-# t.datetime "created_at", precision: 6, null: false
-# t.datetime "updated_at", precision: 6, null: false
-# t.string "activity_type"
-# t.string "company"
-# t.string "contact"
-# t.string "job_title"
-# t.string "job_link"
-# t.string "contact_method"
-# t.string "action"
-# t.boolean "action_complete"
-# t.string "notes"
-# t.string "status"
-# t.date "date"
+5.times do
+    Activity.create({
+        activity_type: "???", 
+        company: Faker::Company.name, 
+        job_title: Faker::Job.title, 
+        job_link: Faker::Internet.url, 
+        contact_method: "LinkedIn", 
+        action: "???", 
+        action_complete: true, 
+        notes: Faker::Company.catch_phrase, 
+        status: "???", 
+        date: Faker::Date.backward(days: 5).strftime("%a, %d %b %Y")
+    })
+end
+
+# user: User.find(User.pluck(:id).sample)
