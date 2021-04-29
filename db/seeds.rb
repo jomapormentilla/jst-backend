@@ -1,12 +1,21 @@
 require 'faker'
 require 'date'
 
-# creates 1 global test account
-User.find_or_create_by!(email: "admin@test.com") do |user|
-    user.password = "admin"
-end if Rails.env.development?
+# creates 1 main student test account
+User.find_or_create_by!(email: "student@test.com") do |user|
+    user.name = 'student'
+    user.password = "test"
+    user.account_type = "Student/graduate"
+end
 
-# creates 10 student/graduates
+# creates 1 main admin test account
+User.find_or_create_by!(email: "admin@test.com") do |user|
+    user.name = 'admin'
+    user.password = "test"
+    user.account_type = "Admin"
+end
+
+# creates 10 random student/graduates
 10.times do
     User.create({
         name: Faker::Name.name, 
@@ -18,7 +27,7 @@ end if Rails.env.development?
     })
 end
 
-# creates 3 admins
+# creates 3 random admins
 3.times do
     User.create({
         name: Faker::Name.name, 
