@@ -10,6 +10,16 @@ class UsersController < ApplicationController
         render json: UserSerializer.new(current_user).to_serialized_json
     end
 
+    def show
+        user = User.find_by(id: params[:id])
+
+        if !!user
+            render json: UserSerializer.new(user).to_serialized_json
+        else
+            render json: { error: "Unable to find user." }
+        end
+    end
+
     def create
         user = User.create(user_params)
 
@@ -18,6 +28,27 @@ class UsersController < ApplicationController
             render json: { user: UserSerializer.new(user), jwt: token }, status: :created
         else
             render json: { error: 'Failed to create user.' }, status: :not_acceptable
+        end
+    end
+
+    def update
+        user = User.find_by(id: params[:id])
+
+        if user.update(user_params)
+            render json: UserSerializer.new(user).to_serialized_json
+        else
+            render json: { error: "Something went wrong: unable to update user." }
+        end
+    end
+
+    def destroy
+        user = User.find_by(id: params[:id])
+
+        if user
+            user.destroy
+            render json: { message: "User successfully deleted frmo database." }
+        else
+            render json: { error: "Unable to delete user." }
         end
     end
 
