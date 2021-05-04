@@ -2,14 +2,14 @@ require 'faker'
 require 'date'
 
 # creates 1 main student test account
-User.find_or_create_by!(email: "student@test.com") do |user|
+User.find_or_create_by(email: "student@test.com") do |user|
     user.name = 'student'
     user.password = "test"
     user.account_type = "Student/graduate"
 end
 
 # creates 1 main admin test account
-User.find_or_create_by!(email: "admin@test.com") do |user|
+User.find_or_create_by(email: "admin@test.com") do |user|
     user.name = 'admin'
     user.password = "test"
     user.account_type = "Admin"
