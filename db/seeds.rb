@@ -46,35 +46,19 @@ end
     })
 end
 
-# creates 5 email activities
-5.times do
+# creates 10 contact activities
+10.times do
     Activity.create({
-        activity_type: "???", 
+        activity_type: "Contact", 
         company: Faker::Company.name, 
         job_title: Faker::Job.title, 
         job_link: Faker::Internet.url, 
-        contact_method: "email", 
-        action: "???", 
+        contact_method: "Email", 
+        # action: "???", 
         action_complete: true, 
         notes: Faker::Company.catch_phrase, 
-        status: "???", 
-        date: Faker::Date.backward(days: 5).strftime("%a, %d %b %Y")
-        # week: Week.find(Week.pluck(:id).sample)
-    })
-end
-
-5.times do
-    Activity.create({
-        activity_type: "???", 
-        company: Faker::Company.name, 
-        job_title: Faker::Job.title, 
-        job_link: Faker::Internet.url, 
-        contact_method: "LinkedIn", 
-        action: "???", 
-        action_complete: true, 
-        notes: Faker::Company.catch_phrase, 
-        status: "???", 
-        date: Faker::Date.backward(days: 5).strftime("%a, %d %b %Y")
-        # week: Week.find(Week.pluck(:id).sample)
+        # status: "", 
+        date: Faker::Date.backward(days: 5).strftime("%a, %d %b %Y"),
+        week: Week.find(Week.pluck(:id).sample)
     })
 end
