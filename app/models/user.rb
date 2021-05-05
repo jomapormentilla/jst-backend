@@ -5,6 +5,6 @@ class User < ApplicationRecord
 
     # validations
     validates :name, :email, presence: true
-
-
+    validates :account_type, inclusion: { in: ["Student/graduate", "Career Coach", "Admin"]}
+    
 end
