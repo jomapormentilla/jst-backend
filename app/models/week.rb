@@ -3,5 +3,8 @@ class Week < ApplicationRecord
     has_many :activities
 
     #validations
-    validates :commits, numericality: { only_integer: true }
+    validates :commits, 
+        numericality: { only_integer: true }
+    # validation for blog links??
+    
 end
