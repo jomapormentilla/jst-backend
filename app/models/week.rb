@@ -6,5 +6,5 @@ class Week < ApplicationRecord
     validates :commits, 
         numericality: { only_integer: true }
     # validation for blog links??
-    
+
 end
