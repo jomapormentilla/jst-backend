@@ -4,16 +4,13 @@ class Activity < ApplicationRecord
     # validations
     validates :activity_type, 
         presence: true 
-        # inclusion: { in: []}
+        # inclusion: { in: [] }
     validates :notes, 
         length: { maximum: 1000 }
     validates :status, 
         presence: true,
-        inclusion: { in: ["To Do", "Pending", "Complete"]}
-
+        inclusion: { in: ["To Do", "Pending", "Complete"] }
+    # validates :action, 
+    #     inclusion: { in: [] }
 
 end
-
-# t.string "contact_method"
-# t.string "action"
-# t.boolean "action_complete"
