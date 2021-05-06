@@ -12,16 +12,6 @@ class AuthController < ApplicationController
         end
     end
 
-    def login
-        user = User.find_by(email: params[:email])
-        if user && user.authenticate(params[:password])
-            token = encode_token({user_id: user.id})
-            render json: {user: user, jwt: token, success: "Welcome back, #{user.name}"}
-        else
-            render json: {failure: "Log in failed! Username or password invalid!"}
-        end
-    end
-
     private
 
     def user_login_params
